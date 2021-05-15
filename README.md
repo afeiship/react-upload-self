@@ -51,8 +51,6 @@ npm install -S @jswork/react-upload-self
           <ReactUploadSelf className="mb-5" />
           <ReactUploadSelf className="mb-5" />
           <ReactUploadSelf className="mb-5" />
-          <ReactUploadSelf className="mb-5" />
-          <ReactUploadSelf className="mb-5" />
         </ReactDemokit>
       );
     }
