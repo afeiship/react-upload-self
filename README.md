@@ -25,7 +25,7 @@ npm install -S @jswork/react-upload-self
   @import "~@jswork/react-upload-self/dist/style.css";
 
   // or use sass
-  @import "~@jswork/wsui-frame-wrapper/dist/style.scss";
+  @import "~@jswork/wsui-frame-wrapper/dist/index.scss";
   @import "~@jswork/react-upload-self/dist/style.scss";
   
   
