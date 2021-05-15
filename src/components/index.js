@@ -75,7 +75,7 @@ export default class ReactUploadSelf extends Component {
         />
         <div className="is-placeholder">
           <span className="is-tips">+ 添加文件</span>
-          <button className="is-action" onClick={this.handleRemove}>
+          <button type="button" className="is-action" onClick={this.handleRemove}>
             删除🧨
           </button>
         </div>
