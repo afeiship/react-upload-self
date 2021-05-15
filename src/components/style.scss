@@ -45,6 +45,7 @@ $react-upload-self-options: () !default;
   > .is-placeholder {
     transition: opacity 0.3s;
     position: absolute;
+    min-width: 100px;
     z-index: 2;
     color: #fff;
     font-size: 14px;
