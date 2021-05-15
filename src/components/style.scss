@@ -57,6 +57,9 @@ $react-upload-self-options: () !default;
     padding: 10px;
     border: 1px dotted #fff;
     border-radius: 4px;
+    > .is-tips{
+      font-weight: bold;
+    }
     > .is-action {
       margin-top: 3px;
       color: #333;
