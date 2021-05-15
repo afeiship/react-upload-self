@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import ReactUpload from '@jswork/react-upload';
+import ReactFadeImage from '@jswork/react-fade-image';
 
 const CLASS_NAME = 'react-upload-self';
 
@@ -67,7 +68,7 @@ export default class ReactUploadSelf extends Component {
         data-component={CLASS_NAME}
         data-value={!!_value}
         className={classNames('wsui-frame-wrapper', CLASS_NAME, className)}>
-        {_value && <img src={_value} alt="" />}
+        {_value && <ReactFadeImage src={_value} alt="" />}
         <ReactUpload
           className="is-form-control"
           onChange={this.handleChange}
