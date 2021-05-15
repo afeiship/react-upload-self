@@ -14,8 +14,6 @@ class App extends React.Component {
         <ReactUploadSelf className="mb-5" />
         <ReactUploadSelf className="mb-5" />
         <ReactUploadSelf className="mb-5" />
-        <ReactUploadSelf className="mb-5" />
-        <ReactUploadSelf className="mb-5" />
       </ReactDemokit>
     );
   }

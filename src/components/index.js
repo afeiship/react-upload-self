@@ -37,6 +37,7 @@ export default class ReactUploadSelf extends Component {
 
   shouldComponentUpdate(inProps) {
     const { value } = inProps;
+    if (typeof value === 'undefined') return true;
     if (value !== this.state.value) {
       this.setState({ value });
     }
@@ -51,7 +52,10 @@ export default class ReactUploadSelf extends Component {
   };
 
   handleRemove = () => {
-    this.setState({ value: null });
+    const { onChange } = this.props;
+    const target = { value: null };
+    this.setState(target);
+    onChange({ target });
   };
 
   render() {

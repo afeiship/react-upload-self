@@ -3,12 +3,11 @@ $react-upload-self-options: () !default;
 .react-upload-self {
   $size: 120px;
   position: relative;
-  border: 3px dashed #ccc;
+  border: 1px dashed #ccc;
   background: #eee;
   transition: all 0.3s;
   text-align: center;
   border-radius: 4px;
-  // display: block;
 
   &[data-value="true"] {
     .is-placeholder {
@@ -60,6 +59,8 @@ $react-upload-self-options: () !default;
     border-radius: 4px;
     > .is-action {
       margin-top: 3px;
+      color: #333;
+      padding: 0 6px;
       pointer-events: all;
     }
   }
