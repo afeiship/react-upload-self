@@ -15,7 +15,7 @@ npm install -S @jswork/react-upload-self
 | Name      | Type   | Required | Default | Description                           |
 | --------- | ------ | -------- | ------- | ------------------------------------- |
 | className | string | false    | -       | The extended className for component. |
-| value     | object | false    | null    | The changed value.                    |
+| value     | string | false    | -       | The runtime image url value.          |
 | onChange  | func   | false    | noop    | The change handler.                   |
 
 
@@ -25,7 +25,10 @@ npm install -S @jswork/react-upload-self
   @import "~@jswork/react-upload-self/dist/style.css";
 
   // or use sass
+  @import "~@jswork/wsui-frame-wrapper/dist/style.scss";
   @import "~@jswork/react-upload-self/dist/style.scss";
+  
+  
 
   // customize your styles:
   $react-upload-self-options: ()
@@ -44,8 +47,12 @@ npm install -S @jswork/react-upload-self
         <ReactDemokit
           className="p-3 app-container"
           url="https://github.com/afeiship/react-upload-self">
-          <ReactUploadSelf className="mb-5 has-text-white" />
-          <button className="button is-primary is-fullwidth">Start~</button>
+          <ReactUploadSelf className="mb-5" />
+          <ReactUploadSelf className="mb-5" />
+          <ReactUploadSelf className="mb-5" />
+          <ReactUploadSelf className="mb-5" />
+          <ReactUploadSelf className="mb-5" />
+          <ReactUploadSelf className="mb-5" />
         </ReactDemokit>
       );
     }
