@@ -26,6 +26,7 @@ npm install -S @jswork/react-upload-self
 
   // or use sass
   @import "~@jswork/wsui-frame-wrapper/dist/index.scss";
+  @import "~@jswork/wsui-scaleable-image/dist/index.scss";
   @import "~@jswork/react-fade-image/dist/style.scss";
   @import "~@jswork/react-upload-self/dist/style.scss";
   
