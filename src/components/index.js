@@ -67,8 +67,14 @@ export default class ReactUploadSelf extends Component {
       <div
         data-component={CLASS_NAME}
         data-value={!!_value}
-        className={classNames('wsui-frame-wrapper', CLASS_NAME, className)}>
-        {_value && <ReactFadeImage src={_value} alt="" />}
+        className={classNames(
+          'wsui-scaleable-image wsui-frame-wrapper',
+          CLASS_NAME,
+          className
+        )}>
+        {_value && (
+          <ReactFadeImage className="is-scaleable is-image" src={_value} />
+        )}
         <ReactUpload
           className="is-form-control"
           onChange={this.handleChange}
@@ -76,7 +82,10 @@ export default class ReactUploadSelf extends Component {
         />
         <div className="is-placeholder">
           <span className="is-tips">+ 添加文件</span>
-          <button type="button" className="is-action" onClick={this.handleRemove}>
+          <button
+            type="button"
+            className="is-action"
+            onClick={this.handleRemove}>
             删除🧨
           </button>
         </div>
