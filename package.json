@@ -1,6 +1,6 @@
 {
   "name": "@jswork/react-upload-self",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Upload only one element for react.",
   "main": "dist/index.js",
   "scripts": {
