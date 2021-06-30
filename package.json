@@ -85,7 +85,7 @@
     "@jswork/next-object-url": "^1.0.1",
     "@jswork/noop": "^1.0.0",
     "@jswork/react-fade-image": "^1.0.0",
-    "@jswork/react-upload": "^1.0.1",
+    "@jswork/react-upload": "^1.0.6",
     "@jswork/wsui-frame-wrapper": "^1.0.0",
     "@jswork/wsui-scaleable-image": "^1.0.0",
     "classnames": "^2.2.6"
