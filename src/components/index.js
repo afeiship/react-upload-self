@@ -4,13 +4,12 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import ReactUpload from '@jswork/react-upload';
 import ReactFadeImage from '@jswork/react-fade-image';
-import NxObjectUrl from '@jswork/next-object-url';
 
 const CLASS_NAME = 'react-upload-self';
 
-const DEFAULT_TEMPLATE = ({ file, value }) => {
+const DEFAULT_TEMPLATE = ({ file, url }) => {
   if (!file || file.type.includes('image/')) {
-    return <ReactFadeImage className="is-scaleable is-image" src={value} />;
+    return <ReactFadeImage className="is-scaleable is-image" src={url} />;
   }
   return (
     <div data-type={file.type} className="is-not-image">
@@ -49,7 +48,7 @@ export default class ReactUploadSelf extends Component {
   constructor(inProps) {
     super(inProps);
     this.state = {
-      value: inProps.value || null,
+      url: inProps.value || null,
       file: null
     };
   }
@@ -57,45 +56,43 @@ export default class ReactUploadSelf extends Component {
   shouldComponentUpdate(inProps) {
     const { value } = inProps;
     if (typeof value === 'undefined') return true;
-    if (value !== this.state.value) {
-      this.setState({ value });
+    if (value !== this.state.url) {
+      this.setState({ url: value });
     }
     return true;
   }
 
-  handleChange = (inEvent) => {
-    const { files } = inEvent.target.value;
+  change = (inValue) => {
     const { onChange } = this.props;
-    if (!files.length) return null;
-    const file = files[0];
-    const value = NxObjectUrl.create(file).url;
-    const target = { value, file };
-    this.setState(target);
-    onChange({ target });
+    this.setState(inValue);
+    onChange({ target: { value: inValue } });
+  };
+
+  handleChange = (inEvent) => {
+    const { value } = inEvent.target;
+    if (!value.length) return null;
+    const { file, blob } = value[0];
+    this.change({ url: blob, file });
   };
 
   handleRemove = () => {
-    const { onChange } = this.props;
-    const target = { value: null, file: null };
-    this.setState(target);
-    onChange({ target });
+    this.change({ url: null, file: null });
   };
 
   render() {
     const { className, onChange, template, value, ...props } = this.props;
-    const _value = this.state.value;
-    const file = this.state.file;
+    const { url, file } = this.state;
 
     return (
       <div
         data-component={CLASS_NAME}
-        data-value={!!_value}
+        data-value={!!url}
         className={classNames(
           'wsui-scaleable-image wsui-frame-wrapper',
           CLASS_NAME,
           className
         )}>
-        {_value && template({ value: _value, file })}
+        {url && template({ url, file })}
         <ReactUpload
           className="is-form-control"
           onChange={this.handleChange}

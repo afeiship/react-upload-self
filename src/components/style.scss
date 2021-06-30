@@ -1,13 +1,21 @@
-$react-upload-self-options: () !default;
+$react-upload-self-options: (
+  size: 120px,
+) !default;
 
 .react-upload-self {
-  $size: 120px;
+  $size: map-get(
+    $map: $react-upload-self-options,
+    $key: size,
+  );
+
   position: relative;
   border: 1px dashed #ccc;
   background: #eee;
   transition: all 0.3s;
   text-align: center;
   border-radius: 4px;
+  width: $size;
+  height: $size;
 
   &[data-value="true"] {
     .is-placeholder {
