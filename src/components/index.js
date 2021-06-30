@@ -69,8 +69,9 @@ export default class ReactUploadSelf extends Component {
     if (!files.length) return null;
     const file = files[0];
     const value = NxObjectUrl.create(file).url;
-    this.setState({ value, file });
-    onChange(inEvent);
+    const target = { value, file };
+    this.setState(target);
+    onChange({ target });
   };
 
   handleRemove = () => {
