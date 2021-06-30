@@ -4,8 +4,20 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import ReactUpload from '@jswork/react-upload';
 import ReactFadeImage from '@jswork/react-fade-image';
+import NxObjectUrl from '@jswork/next-object-url';
 
 const CLASS_NAME = 'react-upload-self';
+
+const DEFAULT_TEMPLATE = ({ file, value }) => {
+  if (!file || file.type.includes('image/')) {
+    return <ReactFadeImage className="is-scaleable is-image" src={value} />;
+  }
+  return (
+    <div data-type={file.type} className="is-not-image">
+      {file.name}
+    </div>
+  );
+};
 
 export default class ReactUploadSelf extends Component {
   static displayName = CLASS_NAME;
@@ -22,17 +34,23 @@ export default class ReactUploadSelf extends Component {
     /**
      * The change handler.
      */
-    onChange: PropTypes.func
+    onChange: PropTypes.func,
+    /**
+     * The uploaded display template.
+     */
+    template: PropTypes.func
   };
 
   static defaultProps = {
-    onChange: noop
+    onChange: noop,
+    template: DEFAULT_TEMPLATE
   };
 
   constructor(inProps) {
     super(inProps);
     this.state = {
-      value: inProps.value
+      value: inProps.value || null,
+      file: null
     };
   }
 
@@ -46,22 +64,25 @@ export default class ReactUploadSelf extends Component {
   }
 
   handleChange = (inEvent) => {
-    const { blobs } = inEvent.target.value;
+    const { files } = inEvent.target.value;
     const { onChange } = this.props;
-    this.setState({ value: blobs[0] });
+    const file = files[0];
+    const value = NxObjectUrl.create(file).url;
+    this.setState({ value, file });
     onChange(inEvent);
   };
 
   handleRemove = () => {
     const { onChange } = this.props;
-    const target = { value: null };
+    const target = { value: null, file: null };
     this.setState(target);
     onChange({ target });
   };
 
   render() {
-    const { className, onChange, value, ...props } = this.props;
+    const { className, onChange, template, value, ...props } = this.props;
     const _value = this.state.value;
+    const file = this.state.file;
 
     return (
       <div
@@ -72,9 +93,7 @@ export default class ReactUploadSelf extends Component {
           CLASS_NAME,
           className
         )}>
-        {_value && (
-          <ReactFadeImage className="is-scaleable is-image" src={_value} />
-        )}
+        {_value && template({ value: _value, file })}
         <ReactUpload
           className="is-form-control"
           onChange={this.handleChange}
