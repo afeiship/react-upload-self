@@ -17,6 +17,7 @@ npm install -S @jswork/react-upload-self
 | className | string | false    | -       | The extended className for component. |
 | value     | string | false    | -       | The runtime image url value.          |
 | onChange  | func   | false    | noop    | The change handler.                   |
+| template  | func   | false    | -       | The uploaded display template.        |
 
 
 ## usage
