@@ -71,8 +71,7 @@ export default class ReactUploadSelf extends Component {
   handleChange = (inEvent) => {
     const { value } = inEvent.target;
     if (!value.length) return null;
-    const { file, blob } = value[0];
-    this.change({ url: blob, file });
+    this.change(value[0]);
   };
 
   handleRemove = () => {
