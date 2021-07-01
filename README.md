@@ -60,8 +60,9 @@ npm install -S @jswork/react-upload-self
             onChange={(e) => {
               console.log('changed.');
               const { value } = e.target;
+              const { url } = value;
               if (value) {
-                this.setState({ v1: value.blobs[0] });
+                this.setState({ v1: url });
                 setTimeout(() => {
                   console.log('fetch image from api:');
                   this.setState({
