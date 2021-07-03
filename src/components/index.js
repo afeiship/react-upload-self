@@ -37,7 +37,11 @@ export default class ReactUploadSelf extends Component {
     /**
      * The uploaded display template.
      */
-    template: PropTypes.func
+    template: PropTypes.func,
+    /**
+     * Toolbar element.
+     */
+    toolbar: PropTypes.func
   };
 
   static defaultProps = {
@@ -47,16 +51,12 @@ export default class ReactUploadSelf extends Component {
 
   constructor(inProps) {
     super(inProps);
-    this.state = {
-      url: inProps.value || null,
-      file: null
-    };
+    this.state = { url: inProps.value || null, file: null };
   }
 
   shouldComponentUpdate(inProps) {
     const { value } = inProps;
-    if (typeof value === 'undefined') return true;
-    if (value !== this.state.url) {
+    if (value && value !== this.state.url) {
       this.setState({ url: value });
     }
     return true;
@@ -70,7 +70,6 @@ export default class ReactUploadSelf extends Component {
 
   handleChange = (inEvent) => {
     const { value } = inEvent.target;
-    if (!value.length) return null;
     this.change(value[0]);
   };
 
@@ -79,33 +78,16 @@ export default class ReactUploadSelf extends Component {
   };
 
   render() {
-    const { className, onChange, template, value, ...props } = this.props;
+    const { className, onChange, template, value, toolbar, ...props } = this.props;
     const { url, file } = this.state;
 
     return (
       <div
         data-component={CLASS_NAME}
         data-value={!!url}
-        className={classNames(
-          'wsui-scaleable-image wsui-frame-wrapper',
-          CLASS_NAME,
-          className
-        )}>
+        className={classNames('wsui-scaleable-image', 'wsui-frame-wrapper', CLASS_NAME, className)}>
         {url && template({ url, file })}
-        <ReactUpload
-          className="is-form-control"
-          onChange={this.handleChange}
-          {...props}
-        />
-        <div className="is-placeholder">
-          <span className="is-tips">+ 添加文件</span>
-          <button
-            type="button"
-            className="is-action"
-            onClick={this.handleRemove}>
-            删除🧨
-          </button>
-        </div>
+        <ReactUpload className="is-form-control" onChange={this.handleChange} title="" {...props} />
       </div>
     );
   }

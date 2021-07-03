@@ -21,7 +21,7 @@ class App extends React.Component {
             console.log('changed.');
             const { value } = e.target;
             const { url } = value;
-            if (value) {
+            if (value.file) {
               this.setState({ v1: url });
               setTimeout(() => {
                 console.log('fetch image from api:');

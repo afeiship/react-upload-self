@@ -3,10 +3,7 @@ $react-upload-self-options: (
 ) !default;
 
 .react-upload-self {
-  $size: map-get(
-    $map: $react-upload-self-options,
-    $key: size,
-  );
+  $size: map-get( $map: $react-upload-self-options, $key: size, );
 
   position: relative;
   border: 1px dashed #ccc;
@@ -48,32 +45,5 @@ $react-upload-self-options: (
     bottom: 0;
     left: 0;
     opacity: 0;
-  }
-
-  > .is-placeholder {
-    transition: opacity 0.3s;
-    position: absolute;
-    min-width: 100px;
-    z-index: 2;
-    color: #fff;
-    font-size: 14px;
-    user-select: none;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    background: rgba(#000, 0.4);
-    padding: 10px;
-    border: 1px dotted #fff;
-    border-radius: 4px;
-    > .is-tips {
-      font-weight: bold;
-    }
-    > .is-action {
-      margin-top: 3px;
-      color: #333;
-      padding: 0 6px;
-      pointer-events: all;
-    }
   }
 }
