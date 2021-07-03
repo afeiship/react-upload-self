@@ -18,6 +18,7 @@ npm install -S @jswork/react-upload-self
 | value     | string | false    | -       | The runtime image url value.          |
 | onChange  | func   | false    | noop    | The change handler.                   |
 | template  | func   | false    | -       | The uploaded display template.        |
+| toolbar   | func   | false    | -       | Toolbar element.                      |
 
 
 ## usage
@@ -61,7 +62,7 @@ npm install -S @jswork/react-upload-self
               console.log('changed.');
               const { value } = e.target;
               const { url } = value;
-              if (value) {
+              if (value.file) {
                 this.setState({ v1: url });
                 setTimeout(() => {
                   console.log('fetch image from api:');
