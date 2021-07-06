@@ -56,7 +56,8 @@ export default class ReactUploadSelf extends Component {
 
   shouldComponentUpdate(inProps) {
     const { value } = inProps;
-    if (value && value !== this.state.url) {
+    if (typeof value === 'undefined') return true;
+    if (value !== this.state.url) {
       this.setState({ url: value });
     }
     return true;
